@@ -1,31 +1,34 @@
 import './App.css';
+import React from 'react';
+import CalulatorHeader from './Components/CalculatorHeader';
+import Input from './Components/Input';
+import CalculatorButton from './Components/CalculatorButton';
+import Output from './Components/Output';
 
 function App() {
   return (
-    <div className="App">
+    <div className='App'>
       
-      <>Calculator Application</>
-      <br/><br/>
+        <CalulatorHeader headerName='CALCULATOR APPLICATION'/>
 
-        <label>First Input :&nbsp; 
-          <input type='text' name='firstInput'/>
-        </label>
-      <br/><br/>
+        <Input labelName='First Input' inputName='firstName'/>
 
-        <label>Second Input :&nbsp;
-          <input type='text' name='secondInput'/>
-        </label>
-      <br/><br/>
+        <Input labelName='Second Input' inputName='secondName'/>
 
-        <button> + </button> &nbsp; &nbsp;
-        <button> - </button> &nbsp; &nbsp;
-        <button> * </button> &nbsp; &nbsp;
-        <button> / </button>
-      <br/><br/>
+        <CalculatorButton symbol='+'/>
+        &nbsp;
 
-        <label>Results : &nbsp;
-          <input type='text' name='results'/>
-        </label>
+        <CalculatorButton symbol='-'/>
+        &nbsp;
+
+        <CalculatorButton symbol='*'/>
+        &nbsp;
+
+        <CalculatorButton symbol='/'/>
+        <br/>
+        <br/>
+
+        <Output labelName='Results' outputName='results'/>
 
     </div>
   );
