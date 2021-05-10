@@ -1,6 +1,6 @@
 import React from 'react';
 
-const calculatorheader = (props) => {
+const header = (props) => {
     return (
         <div>
             <p> <b>{props.headerName}</b> </p>
@@ -9,4 +9,4 @@ const calculatorheader = (props) => {
     );
 }
 
-export default calculatorheader;
+export default header;
