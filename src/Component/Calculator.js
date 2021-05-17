@@ -49,10 +49,10 @@ export default class Calculator extends Component {
 
         const {firstInput, secondInput, result} = this.state
 
-        const isDisabled = firstInput.length < 1 || secondInput.length < 1
+        const isDisabled = firstInput.length === 0 || secondInput.length === 0
         
         return (
-            <div>
+            <div data-testid='testId'>
 
                 <p><b>Calculator Application</b></p>
                 <label>First Input : </label>
@@ -73,7 +73,7 @@ export default class Calculator extends Component {
                 <br/>
 
                 <label>Result : </label>
-                <input name='result' type='text' placeholder='0' value= {result}/>
+                <input name='result' type='text' placeholder='0' value= {result} readOnly/>
 
             </div>
         )
