@@ -1,6 +1,14 @@
 .button {
-    background-color: lightblue;
+    background-color: lightgreen;
     color: black;
     font-size: medium;
     padding: 5px 20px;
+}
+
+input:focus {
+    background: green;
+}
+
+input:disabled {
+    background:grey;
 }
