@@ -10,70 +10,85 @@ export default class Calculator extends Component {
             secondInput : '',
             result: ''
         }
-
-        this.handleFirstInput = this.handleFirstInput.bind(this)
-        this.handleSecondInput = this.handleSecondInput.bind(this)
-
-        this.add = this.add.bind(this)
-        this.sub = this.sub.bind(this)
-        this.division = this.division.bind(this)
-        this.multiply = this.multiply.bind(this)
-
     }
 
-    handleFirstInput = e => this.setState({
-        firstInput : e.target.value
-    })
+    handleFirstInput = value => {
+        let {result} = this.state;
 
-    handleSecondInput = e => this.setState({
-        secondInput : e.target.value
-    })
+        if(value === '')
+            result = ''
+        
+        this.setState({
+        firstInput : value,
+        result
+        })
+    }
 
-    add =  e => this.setState({
-        result : parseInt(this.state.firstInput) + parseInt(this.state.secondInput)
-    })
+    handleSecondInput = value => {
+        let {result} = this.state;
 
-    sub =  e => this.setState({
-        result : parseInt(this.state.firstInput) - parseInt(this.state.secondInput)
-    })
-
-    division =  e => this.setState({
-        result : parseInt(this.state.firstInput) / parseInt(this.state.secondInput)
-    })
-
-    multiply =  e => this.setState({
-        result : parseInt(this.state.firstInput) * parseInt(this.state.secondInput)
-    })
+        if(value === '')
+            result = ''
     
+        this.setState({
+            secondInput : value,
+            result
+        })
+    }
+
+    add = () => {
+        this.setState({
+            result : parseInt(this.state.firstInput) + parseInt(this.state.secondInput)
+        })
+    }
+
+    subtract = () => {
+        this.setState({
+            result : parseInt(this.state.firstInput) - parseInt(this.state.secondInput)
+        })
+    }
+
+    divide = () => {
+        this.setState({
+            result : parseInt(this.state.firstInput) / parseInt(this.state.secondInput)
+        })
+    }
+
+    multiply = () => {
+        this.setState({
+            result : parseInt(this.state.firstInput) * parseInt(this.state.secondInput)
+        })
+    }
+
     render() {
 
         const {firstInput, secondInput, result} = this.state
 
         const isDisabled = firstInput.length === 0 || secondInput.length === 0
-        
+
         return (
-            <div data-testid='testId'>
+            <div title='calculator'>
 
                 <p><b>Calculator Application</b></p>
                 <label>First Input : </label>
-                <input name='firstInput' type='number' placeholder='0' value={firstInput} onChange={this.handleFirstInput}/>
+                <input title='firstInput' type='number' placeholder='0' value={firstInput} onChange={(e)  => this.handleFirstInput(e.target.value)}/>
                 <br/>
                 <br/>
 
                 <label>Second Input : </label>
-                <input name='secondInput' type='number' placeholder='0' value={secondInput} onChange={this.handleSecondInput}/>
+                <input title='secondInput' type='number' placeholder='0' value={secondInput} onChange={(e)  => this.handleSecondInput(e.target.value)}/>
                 <br/>
                 <br/>
-
-                <input name='add' type='button' value='+' onClick={this.add} disabled={isDisabled}/>
-                <input name='sub' type='button' value='-' onClick={this.sub} disabled={isDisabled}/>
-                <input name='division' type='button' value='/' onClick={this.division} disabled={isDisabled}/>
-                <input name='multiply' type='button' value='*' onClick={this.multiply} disabled={isDisabled}/>
+ 
+                <input title='add' type='button' value='+' onClick={() => this.add()} disabled={isDisabled}/>
+                <input title='subtract' type='button' value='-' onClick={() => this.subtract()} disabled={isDisabled}/>
+                <input title='divide' type='button' value='/' onClick={() => this.divide()} disabled={isDisabled}/>
+                <input title='multiply' type='button' value='*' onClick={() => this.multiply()} disabled={isDisabled}/>
                 <br/>
                 <br/>
 
                 <label>Result : </label>
-                <input name='result' type='text' placeholder='0' value= {result} readOnly/>
+                <input title='result' type='text' placeholder='0' value= {result} readOnly/>
 
             </div>
         )
